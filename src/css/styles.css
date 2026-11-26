@@ -5,6 +5,8 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
@@ -19,6 +21,7 @@ body {
   gap: 16px;
   padding: 0;
   list-style: none;
+  padding-left: 36px;
 }
 
 .gallery li {
@@ -52,6 +55,13 @@ body {
 
 .btn-load-more:hover {
   background-color: #6c8cff;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 36px;
 }
 
 .form input {

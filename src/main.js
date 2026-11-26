@@ -70,11 +70,12 @@ form.addEventListener('submit', async event => {
 
 const loadImages = async () => {
   try {
+    hideLoadMoreButton();
     showLoader();
     const { hits, totalHits } = await getImagesByQuery(query, page + 1);
     page += 1;
     createGallery(hits);
-
+    showLoadMoreButton();
     const totalPages = Math.ceil(totalHits / perPage);
     if (page >= totalPages) {
       hideLoadMoreButton();

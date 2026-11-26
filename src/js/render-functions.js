@@ -1,18 +1,18 @@
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
 const loadMore = document.querySelector('.btn-load-more');
 const loader = document.querySelector('.loader');
 
-const lightbox = new SimpleLightbox('.gallery .gallery-link', {
-  captionsData: 'alt',
-  captionDelay: 250,
+const lightbox = GLightbox({
+  selector: '.gallery .gallery-link',
+  loop: true,
 });
 
 export const clearGallery = () => {
   gallery.textContent = '';
-  lightbox.refresh();
+  lightbox.reload();
 };
 
 export const createGallery = images => {
@@ -26,6 +26,7 @@ export const createGallery = images => {
     li.classList.add('gallery-item');
     a.classList.add('gallery-link');
     a.setAttribute('href', image.largeImageURL);
+    a.setAttribute('data-description', image.tags);
     img.classList.add('gallery-image');
     img.setAttribute('src', image.webformatURL);
     img.setAttribute('alt', image.tags);
@@ -38,7 +39,7 @@ export const createGallery = images => {
 
   gallery.append(...galleryItems);
 
-  lightbox.refresh();
+  lightbox.reload();
 };
 
 export const showLoader = () => {
